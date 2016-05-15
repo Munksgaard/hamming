@@ -3,3 +3,6 @@
 name = "hamming"
 version = "0.0.1"
 authors = ["Philip Munksgaard <pmunksgaard@gmail.com>"]
+
+[dependencies]
+bit-vec = "0.4.3"

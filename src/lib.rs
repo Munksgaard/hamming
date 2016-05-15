@@ -1,16 +1,19 @@
-use std::collections::bitv::from_bytes;
-use std::iter::AdditiveIterator;
+#![feature(iter_arith)]
 
-pub fn dist(s1: &[u8], s2: &[u8]) -> uint {
+extern crate bit_vec;
+
+use bit_vec::BitVec;
+
+pub fn dist(s1: &[u8], s2: &[u8]) -> u64 {
    let xor: Vec<u8> = s1
         .iter()
         .zip(s2.iter())
         .map(|(&x,&y)| x ^ y)
         .collect();
 
-    from_bytes(xor.as_slice())
+    BitVec::from_bytes(xor.as_slice())
         .iter()
-        .map(|x| x as uint)
+        .map(|x| x as u64)
         .sum()
 }
 
